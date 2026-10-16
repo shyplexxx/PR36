@@ -34,7 +34,7 @@ namespace PR32
             using (MySqlConnection  conn = new MySqlConnection(connStr))
             {
                 conn.Open();
-                string sql = @"SELECT 
+                string sql = @"SELECT DISTINCT
 	                                orderproduct.OrderProductID,
                                     orderproduct.OrderProductAtricle,
                                     product.ProductName,
@@ -107,7 +107,7 @@ namespace PR32
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"{SessionManager.ID}");
+            MessageBox.Show($"{OrderData.ID}");
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)

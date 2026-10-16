@@ -43,8 +43,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,6 +54,8 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,11 +65,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(466, 25);
+            this.label1.Location = new System.Drawing.Point(529, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(386, 25);
+            this.label1.Size = new System.Drawing.Size(270, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Форма добавления / редактирования";
+            this.label1.Text = "Форма просмотра заказа";
             // 
             // textBox1
             // 
@@ -77,6 +77,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(371, 44);
             this.textBox1.TabIndex = 1;
             // 
@@ -87,26 +88,29 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(367, 44);
             this.textBox2.TabIndex = 2;
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox3.Location = new System.Drawing.Point(12, 252);
+            this.textBox3.Location = new System.Drawing.Point(12, 224);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(240, 44);
             this.textBox3.TabIndex = 4;
             // 
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox5.Location = new System.Drawing.Point(11, 163);
+            this.textBox5.Location = new System.Drawing.Point(11, 146);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(372, 44);
             this.textBox5.TabIndex = 7;
             // 
@@ -124,7 +128,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 134);
+            this.label3.Location = new System.Drawing.Point(7, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(161, 25);
             this.label3.TabIndex = 13;
@@ -134,11 +138,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 223);
+            this.label5.Location = new System.Drawing.Point(7, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 25);
             this.label5.TabIndex = 15;
             this.label5.Text = "Цена";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label7
             // 
@@ -154,19 +159,21 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(263, 223);
+            this.label4.Location = new System.Drawing.Point(263, 195);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 25);
             this.label4.TabIndex = 19;
             this.label4.Text = "Кол-во";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox6.Location = new System.Drawing.Point(268, 252);
+            this.textBox6.Location = new System.Drawing.Point(268, 224);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(115, 44);
             this.textBox6.TabIndex = 18;
             // 
@@ -187,6 +194,7 @@
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(367, 44);
             this.textBox4.TabIndex = 20;
             // 
@@ -207,31 +215,14 @@
             this.textBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(367, 44);
             this.textBox7.TabIndex = 22;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 276);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 25);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Телефон";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBox8.Location = new System.Drawing.Point(15, 305);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(367, 44);
-            this.textBox8.TabIndex = 24;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox5);
@@ -240,7 +231,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(23, 68);
+            this.groupBox1.Location = new System.Drawing.Point(12, 106);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(396, 417);
             this.groupBox1.TabIndex = 26;
@@ -252,13 +243,11 @@
             // 
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(471, 68);
+            this.groupBox2.Location = new System.Drawing.Point(471, 106);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(396, 417);
             this.groupBox2.TabIndex = 27;
@@ -275,7 +264,7 @@
             this.groupBox3.Controls.Add(this.textBox12);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Location = new System.Drawing.Point(919, 68);
+            this.groupBox3.Location = new System.Drawing.Point(919, 106);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(396, 417);
             this.groupBox3.TabIndex = 28;
@@ -289,6 +278,7 @@
             this.textBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(367, 44);
             this.textBox9.TabIndex = 22;
             // 
@@ -299,6 +289,7 @@
             this.textBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(367, 44);
             this.textBox10.TabIndex = 2;
             // 
@@ -316,9 +307,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(10, 38);
+            this.label11.Location = new System.Drawing.Point(10, 33);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(164, 30);
+            this.label11.Size = new System.Drawing.Size(137, 25);
             this.label11.TabIndex = 17;
             this.label11.Text = "Дата заказа";
             // 
@@ -329,6 +320,7 @@
             this.textBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(367, 44);
             this.textBox11.TabIndex = 24;
             // 
@@ -339,6 +331,7 @@
             this.textBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(367, 44);
             this.textBox12.TabIndex = 20;
             // 
@@ -362,11 +355,32 @@
             this.label13.TabIndex = 21;
             this.label13.Text = "Дата доставки";
             // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.textBox8.Location = new System.Drawing.Point(11, 305);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(371, 44);
+            this.textBox8.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(7, 276);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(155, 25);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Сумма заказа";
+            // 
             // ProductEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 497);
+            this.ClientSize = new System.Drawing.Size(1327, 543);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -376,6 +390,7 @@
             this.Name = "ProductEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductEditForm";
+            this.Load += new System.EventHandler(this.ProductEditForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -404,8 +419,6 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -417,5 +430,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label9;
     }
 }
