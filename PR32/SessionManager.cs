@@ -11,6 +11,8 @@ namespace PR32
         public static string CurrentUserFullName { get; set; } = null;
         public static bool IsGuest { get; set; } = false;
 
+        public static string ID { get; set; } = null;
+
         // Параметр бездействия пользователя в секундах (по умолчанию 30)
         public static int InactivityTimeoutSeconds { get; set; } = 30;
 

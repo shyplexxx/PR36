@@ -154,7 +154,7 @@ namespace PR32
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 ShowCaptcha();
-
+                
                 
                 if (failedAttempts > 1)
                 {
