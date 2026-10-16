@@ -296,15 +296,6 @@ namespace PR32
 
                             }
 
-
-
-
-
-
-
-
-
-
                         }
                         catch(Exception)
                         {
@@ -312,18 +303,107 @@ namespace PR32
                             return;
                         }
 
-                        
-
-
-
-
-
                     }
                     MessageBox.Show("Данные успешно импортированы", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 
                 }
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        string connStr = $"server={Settings.Default.host};user={Settings.Default.uid};password={Settings.Default.pwd};database={Settings.Default.database}";
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string tableName = comboBox2.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(tableName)) return;
+
+            DataTable table = new DataTable();
+
+            string sql = $"SELECT * FROM `{tableName}`;";
+
+            try
+            {
+                using(MySqlConnection  mySqlConnection = new MySqlConnection(connStr))
+                {
+                    mySqlConnection.Open();
+
+                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(sql, mySqlConnection))
+                    {
+                        mySqlDataAdapter.Fill(table);
+                    }
+                }
+
+                if(table.Rows.Count == 0)
+                {
+                    MessageBox.Show($"Таблица пустая!");
+                    return;
+                }
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "CSV файлы (*.csv)|*.csv";
+                    saveFileDialog.FileName = $"{tableName}_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+                    if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        ExprotToCsv(table, saveFileDialog.FileName);
+                        MessageBox.Show("Успех");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка! {ex.Message}");
+            }
+        }
+
+        private void ExprotToCsv(DataTable table, string tableName)
+        {
+            StringBuilder sb = new StringBuilder();
+            string[] columsName = new string[table.Columns.Count];
+            for(int i = 0; i < table.Columns.Count; i++)
+            {
+                columsName[i] = $"\"{table.Columns[i].ColumnName.Replace("\"", "\"\"")}\"";
+            }
+
+            sb.AppendLine(string.Join(";", columsName));
+
+            foreach(DataRow row in table.Rows)
+            {
+                string[] Fields = new string[table.Columns.Count];
+                for(int i = 0;i < table.Columns.Count; i++)
+                {
+                    Fields[i] = $"\"{row[i].ToString().Replace("\"", "\"\"")}\"";
+                }
+                sb.AppendLine(string.Join(";", Fields));
+            }
+
+            File.WriteAllText(tableName, sb.ToString(), Encoding.UTF8);
+        }
+
+        private void Form3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string connStr = $"server={Settings.Default.host};user={Settings.Default.uid};password={Settings.Default.pwd};database={Settings.Default.database}";
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"dump_{DateTime.Now:yyyyMMdd_HHmmss}.sql");
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            using (MySqlCommand cmd = new MySqlCommand { Connection = conn })
+            using (MySqlBackup m = new MySqlBackup(cmd))
+            {
+                conn.Open();
+                m.ExportToFile(path);
             }
         }
     }
